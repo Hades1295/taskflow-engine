@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agentic AI Task Manager</title>
+
+    <!-- n8n chat styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .task {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .chat {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🧠 BRD → Tickets Generator</h2>
+
+    <textarea id="brd" rows="6" placeholder="Paste your BRD here..."></textarea>
+    <button onclick="generateTasks()">🚀 Generate Tasks</button>
+
+    <h3>📋 Tickets</h3>
+    <div id="tasks"></div>
+
+    <div class="chat">
+        <h3>💬 Modify Tasks</h3>
+        <input id="instruction" placeholder="e.g. Make all auth tasks HIGH priority" />
+        <button onclick="refineTasks()">Update via AI</button>
+    </div>
+
+    <!-- n8n chat -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'http://localhost:5678/webhook/8f12506c-9474-40fd-99cb-129bdd8a8c49/chat'
+        });
+    </script>
+
+</body>
+
+</html>
